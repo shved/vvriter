@@ -1,4 +1,17 @@
 class VVriter < Roda
+  extend Dry::Configurable
+  setting :root
+  setting :dropbox_token
+  setting :vvrites_extension
+  setting :auth_key
+
+  configure do |config|
+    config.root = File.expand_path(File.dirname(__FILE__))
+    config.dropbox_token = ENV['DROPBOX_TOKEN']
+    config.vvrites_extension = '.slim'.freeze
+    config.auth_key = ENV['AUTH_KEY']
+  end
+
   plugin :render, engine: 'slim'
   plugin :assets, css: 'all.scss', js: 'all.coffee'
   plugin :public
@@ -10,17 +23,24 @@ class VVriter < Roda
       r.public
     end
 
-    r.on ENV['AUTH_KEY'] do
+    r.on self.class.config.auth_key do
       r.get '' do
-        folder = Dropbox.client.list_folder('')
-        @names = folder.entries.map(&:name)
+        @vvrites = []
+
+        Dir.children(Storage::STORAGE_PATH).each do |filename|
+          next if File.extname(filename) != VVriter.config.vvrites_extension
+          @vvrites << VVrite.new(filename)
+        end
+
         view 'list'
       end
 
+      r.post '/sync' do
+        Storage.sync
+        r.redirect
+      end
+
       r.get 'vvrites', String do |vvrite_id|
-        # @cards = Dropbox.client.list_folder("/#{vvrite_id}").entries
-        # @vvrite_id = vvrite_id
-        # view 'editor'
         view inline: '<h1>PIZDEC</h1>'
       end
     end

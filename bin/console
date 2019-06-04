@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require_relative '../deps'
+require_relative '../load'
 
 require 'irb'
 IRB.start(__FILE__)

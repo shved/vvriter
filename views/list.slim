@@ -1,5 +1,5 @@
 ul
-  - @names.each do |name|
+  - @vvrites.each do |vvrite|
     li
-      a href=("vvrites/#{name}")
-        = name
+      a href=("vvrites/#{vvrite.slug}")
+        = vvrite.title

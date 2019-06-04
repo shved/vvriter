@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'tilt'
+gem 'dry-configurable'
 gem 'dropbox_api'
 gem 'roda', '3.20.0'
 gem 'thin'

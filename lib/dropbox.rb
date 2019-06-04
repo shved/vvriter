@@ -1,5 +1,5 @@
 class Dropbox
   def self.client
-    @client ||= DropboxApi::Client.new(ENV['DROPBOX_TOKEN'])
+    @client ||= DropboxApi::Client.new(VVriter.config.dropbox_token)
   end
 end

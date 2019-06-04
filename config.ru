@@ -1,3 +1,3 @@
-require './core'
+require './load'
 
 run VVriter.freeze.app

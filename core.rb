@@ -1,2 +1,0 @@
-require './deps'
-require './vvriter'
