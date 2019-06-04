@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Storage
   STORAGE_PATH = File.join(VVriter.config.root, 'vvrites').freeze
 
@@ -25,7 +27,7 @@ class Storage
       return if File.extname(entry.name) != VVrite.config.vvrites_extension
 
       path = File.join(STORAGE_PATH, entry.name)
-      file = File.new(path, 'w') do |f|
+      file = File.new(path, 'w') do |_f|
         Dropbox.client.download(entry.path_lower)
       end
 

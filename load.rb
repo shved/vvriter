@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'dropbox_api'
 require 'dotenv/load'
 require 'roda'

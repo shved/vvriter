@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VVriter < Roda
   extend Dry::Configurable
   setting :root
@@ -6,9 +8,9 @@ class VVriter < Roda
   setting :auth_key
 
   configure do |config|
-    config.root = File.expand_path(File.dirname(__FILE__))
+    config.root = __dir__
     config.dropbox_token = ENV['DROPBOX_TOKEN']
-    config.vvrites_extension = '.slim'.freeze
+    config.vvrites_extension = '.slim'
     config.auth_key = ENV['AUTH_KEY']
   end
 
@@ -29,6 +31,7 @@ class VVriter < Roda
 
         Dir.children(Storage::STORAGE_PATH).each do |filename|
           next if File.extname(filename) != VVriter.config.vvrites_extension
+
           @vvrites << VVrite.new(filename)
         end
 
@@ -40,7 +43,7 @@ class VVriter < Roda
         r.redirect
       end
 
-      r.get 'vvrites', String do |vvrite_id|
+      r.get 'vvrites', String do |_vvrite_id|
         view inline: '<h1>PIZDEC</h1>'
       end
     end
