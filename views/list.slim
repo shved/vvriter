@@ -1,5 +1,8 @@
+form action=('') method='post'
+  input type='submit'
+
 ul
   - @vvrites.each do |vvrite|
     li
-      a href=("vvrites/#{vvrite.slug}")
+      a href=(vvrite.slug)
         = vvrite.title

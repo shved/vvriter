@@ -38,15 +38,15 @@ class VVriter < Roda
         view 'list'
       end
 
-      r.post '/sync' do
-        Storage.sync
-        r.redirect
-      end
-
-      r.get 'vvrites', String do |vvrite_slug|
+      r.get String do |vvrite_slug|
         filename = vvrite_slug.concat(VVriter.config.vvrites_extension)
         view_path = File.join(Storage::STORAGE_PATH, filename)
         view path: view_path
+      end
+
+      r.post '' do
+        Storage.sync
+        r.redirect
       end
     end
   end

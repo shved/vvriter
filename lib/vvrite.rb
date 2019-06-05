@@ -10,7 +10,11 @@ class VVrite
   end
 
   def title
-    @title ||= File.open(full_path, &:readline)
+    @title ||= begin
+                 File.open(full_path, &:readline)
+               rescue
+                 return nil
+               end
   end
 
   def full_path
