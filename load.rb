@@ -1,5 +1,5 @@
 require 'dropbox_api'
-require 'dotenv/load'
+require 'dotenv/load' if ENV['RACK_ENV'] != 'production'
 require 'roda'
 require 'dry-configurable'
 require './vvriter'

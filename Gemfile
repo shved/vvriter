@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.6.1'
 
 gem 'dropbox_api'
 gem 'dry-configurable'
