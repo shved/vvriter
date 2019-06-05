@@ -43,8 +43,10 @@ class VVriter < Roda
         r.redirect
       end
 
-      r.get 'vvrites', String do |_vvrite_id|
-        view inline: '<h1>PIZDEC</h1>'
+      r.get 'vvrites', String do |vvrite_slug|
+        filename = vvrite_slug.concat(VVriter.config.vvrites_extension)
+        view_path = File.join(Storage::STORAGE_PATH, filename)
+        view path: view_path
       end
     end
   end
