@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class VVrite
   def initialize(filename)
     @filename = filename
@@ -11,8 +9,8 @@ class VVrite
 
   def title
     @title ||= begin
-                 File.open(full_path, &:readline)
-               rescue
+                 File.open(full_path, &:readline).gsub(/^[\wа-яА-Я]+/, '').strip
+               rescue StandardError
                  return nil
                end
   end

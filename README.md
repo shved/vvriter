@@ -16,10 +16,9 @@ Set the env variable AUTH_KEY and route right to it as `schema://host/<AUTH_KEY>
 make run DROPBOX_TOKEN=<oauth token> AUTH_KEY=<your auth key>
 ```
 
-# Lint and test
+# Lint
 ```
 make lint
-make test
 ```
 
 # Console

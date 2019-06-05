@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class VVriter < Roda
   extend Dry::Configurable
   setting :root
@@ -15,12 +13,9 @@ class VVriter < Roda
   end
 
   plugin :render, engine: 'slim'
-  plugin :assets, css: 'all.scss', js: 'all.coffee'
   plugin :public
 
   route do |r|
-    r.assets
-
     r.on('public') do
       r.public
     end

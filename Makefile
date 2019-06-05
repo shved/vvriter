@@ -1,10 +1,7 @@
-default: lint test
+default: lint
 
 install:
 	bundle install
-
-test:
-	bin/rspec
 
 lint:
 	bin/rubocop

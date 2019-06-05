@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Storage
   STORAGE_PATH = File.join(VVriter.config.root, 'vvrites').freeze
 

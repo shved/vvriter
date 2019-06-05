@@ -1,8 +1,9 @@
 form action=('') method='post'
-  input type='submit'
+  button.sync-button type='submit'
+    | Синхронизировать
 
-ul
+ul.vvrites-list
   - @vvrites.each do |vvrite|
     li
-      a href=(vvrite.slug)
+      a.title href=(vvrite.slug)
         = vvrite.title
