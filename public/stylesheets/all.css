@@ -2,7 +2,7 @@ body {
   background-color: #f2ecd9;
   letter-spacing: 0.015em;
   margin: 0;
-  font-family: 'Merriweather', serif;
+  font-family: 'EB Garamond', serif;
 }
 
 .container {
@@ -15,10 +15,9 @@ body {
 
 h1 {
   text-align: center;
-  font-style: italic;
-  font-size: 1.6em;
-  font-weight: 700;
-  margin: 4em;
+  font-size: 2.5em;
+  font-weight: 600;
+  margin: 2.5em;
 }
 
 nav {
@@ -26,22 +25,21 @@ nav {
 }
 
 p {
-  font-size: 1em;
-  font-weight: 300;
+  font-size: 1.4em;
+  font-weight: 400;
   line-height: 1.5;
 }
 
 figure {
-  font-size: 1em;
+  font-size: 1.4em;
   font-style: italic;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.5;
 }
 
 a.title {
-  font-style: italic;
-  font-size: 1.6em;
-  font-weight: 700;
+  font-size: 2.5em;
+  font-weight: 600;
   color: black;
   text-decoration: none;
 }
@@ -65,14 +63,14 @@ button.sync-button {
   background: none;
   color: black;
   border-style: none;
-  font-weight: 300;
+  font-weight: 400;
   text-shadow:none;
   text-align: center;
   text-decoration: none;
   position: absolute;
   left: 1em;
   top: 1em;
-  font-size: 1em;
+  font-size: 1.2em;
 }
 
 button.sync-button:hover {
