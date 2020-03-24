@@ -7,8 +7,11 @@ class Storage
 
       folder = Dropbox.client.list_folder('')
 
-      folder.entries.each do |en|
-        sync_entry(en)
+      folder.entries.each do |entry|
+        next if entry.to_hash['.tag'] != 'file'
+        next if File.extname(entry.name) != VVriter.config.vvrites_extension
+
+        sync_entry(entry)
       end
     end
 
@@ -21,10 +24,7 @@ class Storage
     end
 
     def sync_entry(entry)
-      return if entry.to_hash['.tag'] != 'file'
-      return if File.extname(entry.name) != VVriter.config.vvrites_extension
-
-      path = File.join(STORAGE_PATH, entry.name)
+      path = build_path(entry)
       file = File.new(path, 'w')
 
       Dropbox.client.download(entry.path_lower) do |data|
@@ -32,6 +32,12 @@ class Storage
       end
 
       file.close
+    end
+
+    def build_path(entry)
+      # join filename with content hashsum to make sure heroku or browsers wont cache updated texts
+      hashed_name = entry.name.split('.').join("-#{entry.content_hash[0..7]}.")
+      File.join(STORAGE_PATH, hashed_name)
     end
   end
 end
